@@ -1,41 +1,28 @@
-fun main() {
-    var nbrtry = 0;
-    println("entez une valeur pour l'odinateur : ")
+import kotlin.math.absoluteValue
+import kotlin.system.exitProcess
 
-    var val1 = System.`in`
+fun main(){
 
-    println("entez une valeur pour le joueur : ")
+    print("entrer le nombre de l'ordinateur")
+    val nombreOrdi: Int = readLine()!!.toInt()
+    var nombreJoueur: Int = -1
 
-    var val2 = System.`in`
+    while(nombreJoueur != nombreOrdi){
+        print("Veuillez entrer votre essaye (ou -1 si vous voulez quitter) :")
+        nombreJoueur = readLine()!!.toInt()
 
-    while (val1 == val2) {
-        if (val1 < val2) {
-            println("Trop grand!")
-
-            println("entez une nouvelle valeur : ")
-            val2 = System.`in`
-            nbrtry++;
-            println(nbrtry);
-            println("continuez ?");
-            var continuee = readLine()
-            if(continuee == "non"){
-                return 0;
-            }
-
-        } else {
-            println("Trop petit!")
-
-            println("entez une nouvelle valeur : ")
-            val2 = System.`in`
-            nbrtry++;
-            println(nbrtry);
-            println("continuez ?");
-            var continuee = readLine()
-            if(continuee == "non"){
-                return 0;
-            }
-
-
+        when{
+            nombreJoueur == -1 -> exitProcess(300)
+            nombreJoueur > nombreOrdi -> println("Trop grand!")
+            nombreJoueur < nombreOrdi -> println("Trop petit!")
+            nombreJoueur == nombreOrdi -> gagne()
         }
     }
+
+
+}
+
+fun gagne(){
+    println("c'est gagné")
+    exitProcess(-1)
 }
